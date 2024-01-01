@@ -1,4 +1,4 @@
-from flask import Flask, make_response, request
+from flask import Flask, make_response, request, render_template
 from pysondb import db
 
 app = Flask(__name__)
@@ -40,6 +40,10 @@ def dashboard():
     user = database.getById(int(idx))
 
     return user['user']
+
+@app.route('/app')
+def app():
+    return render_template('base')
 
 if __name__ == '__main__':
    app.run(debug=True)
