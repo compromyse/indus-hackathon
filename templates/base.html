@@ -4,19 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/css/pico.min.css">
-<script src="//cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script> 
+    <script src="//cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
     <title>{% block title %}{% endblock %} - Lunar Oasis</title>
   </head>
   <body>
-    <main class="container">
+    <main class="container-fluid">
         {% if user is defined %}
-  <nav>
+        <nav style="margin-left: 100px; margin-right: 100px">
     <ul>
-      <li><a href="/app"><strong>Dashboard</strong></a></li>
-      <li>Welcome, {{ user['login'] }}</li>
+      <li>
+        <hgroup><a href="/app" style="font-size: 40px"><strong>Dashboard</strong></a>
+          <p>Welcome, {{ user['login'] }}</p></hgroup></li>
     </ul>
     <ul>
-      <li><a href="#">Shop</a></li>
+      <li><a onclick="document.getElementById('shop').open = true" style="font-size: 30px">Shop</a></li>
     </ul>
   </nav>
         {% endif %}

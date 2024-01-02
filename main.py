@@ -59,7 +59,7 @@ def application():
     n = round(random.uniform(0.98, 1.2), 5)
     nh = random.randint(44, 49)
     nt = random.randint(70, 74)
-    return render_template('dashboard.html', user=user, n=n, nh=nh, nt=nt)
+    return render_template('dashboard.html', user=user, n=n, nh=nh, nt=nt, round=round)
 
 @app.route('/onboarding')
 def onboarding():
