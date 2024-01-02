@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dashboard{% endblock %}</h1>
+<style>
+.progress-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(closest-side, white 79%, transparent 80% 100%),
+    conic-gradient(hotpink 75%, pink 0);    
+}
+
+.progress-bar::before {
+  content: "75%";
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<hgroup>
+  <h1>Welcome, {{ user['login'] }}</h1>
+  <p>This is your dashboard</p>
+  <div class="grid">
+    <article>
+        <hgroup>
+          <h2>Water</h2>
+          <p>{{ user['water'] }}L/80L Remaining</p>
+        </hgroup>
+        <div class="progress-bar">
+          <progress value="{{ 100*(user['water']/80) }}" min="0" max="100"/>
+        </div>
+    </article>
+
+    <article>
+        <hgroup>
+          <h2>Oxygen</h2>
+          <p>{{ user['oxygen'] }}kL/40kL Remaining</p>
+        </hgroup>
+        <div class="progress-bar">
+          <progress value="{{ 100*(user['oxygen']/40) }}" min="0" max="100"/>
+        </div>
+    </article>
+  </div>
+</hgroup>
+{% endblock %}
