@@ -14,13 +14,14 @@
         <nav style="margin-left: 100px; margin-right: 100px">
     <ul>
       <li>
-        <hgroup><a href="/app" style="font-size: 40px"><strong>Dashboard</strong></a>
+        <hgroup><a href="/app" style="font-size: 40px; font-family: monospace"><strong>Dashboard</strong></a>
+        <sub style="font-family: monospace">beta</sub>
           <p>Welcome, {{ user['login'] }}</p></hgroup></li>
     </ul>
     <ul>
-      <li><a onclick="document.getElementById('shop').open = true" style="font-size: 25px">Shop</a></li>
+      <li><a onclick="document.getElementById('shop').open = true" style="font-size: 25px; color: white">Shop</a></li>
       <li>|</li>
-      <li><a onclick="document.cookie = 'id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'; window.location.href = '/'" style="font-size: 25px">Sign Out</a></li>
+      <li><a onclick="document.cookie = 'id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'; window.location.href = '/'" style="font-size: 25px; color: white">Sign Out</a></li>
     </ul>
   </nav>
         {% endif %}

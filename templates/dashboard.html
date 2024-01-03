@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block content %}
+<script>
+function checkout() {
+  oxg = document.getElementById('oxg').value
+  wat = document.getElementById('wat').value
+  window.location.href = "/checkout?oxg=" + oxg + "&wat="+ wat
+}
+</script>
+
 <div style="text-align: center; display: flex; flex-direction: row; flex-wrap: wrap; flex-grow: 1; justify-content: center; column-gap: 60px">
   <div style="margin-top: auto; margin-bottom: auto">
   <img src="/static/moonr.png" width="400px" height="391px" />
@@ -67,17 +75,35 @@
   </article>
 </div>
 <dialog id="shop">
-  <article>
+  <article style="width: 1000px">
     <header>
       <a onclick="window.location.reload();" aria-label="Close" class="close"></a>
       <b style="font-size: 30px">Shop</b>
     </header>
-    <p>
-      Nunc nec ligula a tortor sollicitudin dictum in vel enim. 
-      Quisque facilisis turpis vel eros dictum aliquam et nec turpis. 
-      Sed eleifend a dui nec ullamcorper. 
-      Praesent vehicula lacus ac justo accumsan ullamcorper.
-    </p>
+
+  <article>
+    <header>
+      Water
+    </header>
+    <p>You currently have: {{ user['water'] }}L</p>
+    <p>How much would you like to add?</p>
+      <br>
+    <input id="wat" type="number" style="width: 200px" value="0">
+  </article>
+
+  <article>
+    <header>
+      Oxygen
+    </header>
+    <p>You currently have: {{ user['oxygen'] }}L</p>
+    <p>How much would you like to add?</p>
+      <br>
+    <input id="oxg" type="number" style="width: 200px" value="0">
+  </article>
+
+  <button onclick="checkout()">Checkout: $0.00</button>
+  <sub>Note: As this is beta software, you will not actually be charged for the purchase.</sub>
+
   </article>
 </dialog>
 

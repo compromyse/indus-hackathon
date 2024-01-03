@@ -50,6 +50,19 @@ def signup():
     resp.set_cookie('id', str(user))
     return resp
 
+@app.route('/checkout')
+def checkout():
+    oxg = int(request.args.get('oxg'))
+    wat = int(request.args.get('wat'))
+    user = int(request.cookies.get('id'))
+
+    curW = database.getById(user)['water']
+    curO = database.getById(user)['oxygen']
+
+    database.updateById(user, {'water': curW + wat, 'oxygen': curO + oxg})
+
+    return redirect(url_for('application'))
+
 @app.route('/set_type')
 def set_type():
     idx = int(request.args['idx'])
