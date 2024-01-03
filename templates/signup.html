@@ -43,6 +43,9 @@ if (!isNaN(getCookie('id'))) {
         />
         <button type="submit" class="contrast" >Sign Up</button>
       </form>
+      {% if err is defined %}
+        {{ err }}
+      {% endif %}
     </div>
   </article>
 </main>

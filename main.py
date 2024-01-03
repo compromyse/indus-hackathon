@@ -33,6 +33,10 @@ def signup():
     login = str(request.args.get('login'))
     password = str(request.args.get('password'))
 
+    user = database.getByQuery({ 'login': login })
+    if user != []:
+        return make_response(render_template('signup.html', err="User already exists"))
+
     user = database.add({
         'login': login,
         'password': password,
