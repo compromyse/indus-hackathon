@@ -69,9 +69,13 @@ def onboarding():
 def habitants():
     return render_template('habitants.html')
 
-@app.route('/')
+@app.route('/login')
 def login_page():
     return render_template('login.html')
+
+@app.route('/')
+def landing_page():
+    return render_template('index.html')
 
 if __name__ == '__main__':
    app.run(debug=True)

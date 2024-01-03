@@ -18,7 +18,9 @@
           <p>Welcome, {{ user['login'] }}</p></hgroup></li>
     </ul>
     <ul>
-      <li><a onclick="document.getElementById('shop').open = true" style="font-size: 30px">Shop</a></li>
+      <li><a onclick="document.getElementById('shop').open = true" style="font-size: 25px">Shop</a></li>
+      <li>|</li>
+      <li><a onclick="document.cookie = 'id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'; window.location.href = '/'" style="font-size: 25px">Sign Out</a></li>
     </ul>
   </nav>
         {% endif %}

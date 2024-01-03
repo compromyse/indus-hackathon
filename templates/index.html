@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Home{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<main class="container">
+  <nav style="display: flex; align-items: center">
+    <ul>
+      <a href="/"><img src="/static/moon.png" width="100px" style="margin-top: auto; margin-bottom: auto;" /></a>
+    </ul>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li>|</li>
+      <li><a href="#">Sign Up</a></li>
+      <li>|</li>
+      <li><a href="/login">Log In</a></li>
+    </ul>
+  </nav>
+
+  <div>
+    <hgroup style="text-align: left; padding-top: 80px; font-family: monospace; margin-left: 100px">
+      <h1 style="font-family: monospace;">
+        LunarOasis
+      </h1>
+      <p>Your Gateway to the Future of Space Living</p>
+    </hgroup>
+  </div>
+  <article style="margin-top: 150px">
+    <header style="font-size: 22px">Our Pods</header>
+  </article>
+</main>
+{% endblock %}
