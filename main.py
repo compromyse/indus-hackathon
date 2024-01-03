@@ -11,28 +11,39 @@ def login():
     login = str(request.args.get('login'))
     password = str(request.args.get('password'))
 
-    user = database.getByQuery({
-        'login': login,
-        'password': password
-    })
+    user = database.getByQuery({ 'login': login })
 
     if user == []:
-        user = database.add({
-            'login': login,
-            'password': password,
-            'water': 0,
-            'oxygen': 0,
-            'podstyle': '',
-            'habitants': 0
-        })
+        resp = make_response(render_template('login.html', err="Invalid Login"))
+        return resp
 
-        resp = make_response(redirect(url_for('onboarding')))
-    else:
-        user = user[0]['id']
+    print(user)
+
+    if password == user[0]['password']:
         resp = make_response(redirect(url_for('application')))
 
-    resp.set_cookie('id', str(user))
+        resp.set_cookie('id', str(user[0]['id']))
+    else:
+        resp = make_response(render_template('login.html', err="Invalid Login"))
 
+    return resp
+
+@app.route('/api_signup', methods=['GET'])
+def signup():
+    login = str(request.args.get('login'))
+    password = str(request.args.get('password'))
+
+    user = database.add({
+        'login': login,
+        'password': password,
+        'water': 0,
+        'oxygen': 0,
+        'podstyle': '',
+        'habitants': 0
+    })
+
+    resp = make_response(redirect(url_for('onboarding')))
+    resp.set_cookie('id', str(user))
     return resp
 
 @app.route('/set_type')
@@ -72,6 +83,10 @@ def habitants():
 @app.route('/login')
 def login_page():
     return render_template('login.html')
+
+@app.route('/signup')
+def signup_page():
+    return render_template('signup.html')
 
 @app.route('/')
 def landing_page():
