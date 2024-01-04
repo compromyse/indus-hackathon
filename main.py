@@ -90,7 +90,13 @@ def application():
     n = round(random.uniform(0.98, 1.2), 5)
     nh = random.randint(44, 49)
     nt = random.randint(70, 74)
-    return render_template('dashboard.html', user=user, n=n, nh=nh, nt=nt, round=round)
+    if (user['water'] / (80 * user['habitants']) * 100) < 10:
+        low = 'Water'
+    elif (user['oxygen'] / (40 * user['habitants']) * 100) < 10:
+        low = 'Oxygen'
+    else:
+        low = None
+    return render_template('dashboard.html', user=user, n=n, nh=nh, nt=nt, round=round, low=low)
 
 @app.route('/onboarding')
 def onboarding():

@@ -13,6 +13,10 @@ function checkout() {
 }
 </script>
 
+{% if low != None %}
+<p style="background-color: #f44336; color: white; padding: 20px"><strong>Danger!</strong> {{ low }} levels are extremely low!</p>
+{% endif %}
+
 <div style="text-align: center; display: flex; flex-direction: row; flex-wrap: wrap; flex-grow: 1; justify-content: center; column-gap: 60px">
   <div style="margin-top: auto; margin-bottom: auto">
   <img src="/static/moonr.png" width="400px" height="391px" />
