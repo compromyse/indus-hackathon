@@ -1,8 +1,11 @@
 from flask import Flask, make_response, redirect, request, render_template, url_for
 from pysondb import db
+from flask_talisman import Talisman
 import random
 
 app = Flask(__name__)
+
+Talisman(app, content_security_policy=None)
 
 database = db.getDb('db.json')
 
