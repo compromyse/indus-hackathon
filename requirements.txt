@@ -1,3 +1,4 @@
 Flask
 pysondb
 gunicorn
+flask-talisman
